@@ -1,0 +1,46 @@
+  [1m[35m (333.4ms)[0m  [1m[35mCREATE DATABASE "wildlife_tracker_development" ENCODING = 'unicode'[0m
+  [1m[35m (114.2ms)[0m  [1m[35mCREATE DATABASE "wildlife_tracker_test" ENCODING = 'unicode'[0m
+Started GET "/" for ::1 at 2021-01-02 16:18:19 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/ryansarll/.rvm/gems/ruby-2.7.0/gems/railties-6.1.0/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ryansarll/.rvm/gems/ruby-2.7.0/gems/railties-6.1.0/lib/rails/templates/rails/welcome/index.html.erb (Duration: 11.4ms | Allocations: 448)
+Completed 200 OK in 39ms (Views: 20.1ms | ActiveRecord: 0.0ms | Allocations: 3661)
+
+
+Started GET "/" for ::1 at 2021-01-02 16:18:20 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/ryansarll/.rvm/gems/ruby-2.7.0/gems/railties-6.1.0/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ryansarll/.rvm/gems/ruby-2.7.0/gems/railties-6.1.0/lib/rails/templates/rails/welcome/index.html.erb (Duration: 8.7ms | Allocations: 216)
+Completed 200 OK in 12ms (Views: 10.0ms | ActiveRecord: 0.0ms | Allocations: 829)
+
+
+  [1m[35m (39.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1402211514546441060)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateAnimals (20210103001929)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (9.9ms)[0m  [1m[35mCREATE TABLE "animals" ("id" bigserial primary key, "common_name" character varying, "latin_name" character varying, "kingdom" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210103001929"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSightings (20210103002024)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "sightings" ("id" bigserial primary key, "animal_id" integer, "date" timestamp, "latitude" character varying, "longitude" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210103002024"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (11.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-01-03 00:23:05.629428"], ["updated_at", "2021-01-03 00:23:05.629428"]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (3.8ms)[0m  [1m[34mSELECT pg_advisory_unlock(1402211514546441060)[0m
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAnimal Create (1.3ms)[0m  [1m[32mINSERT INTO "animals" ("common_name", "latin_name", "kingdom", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["common_name", "Dog"], ["latin_name", "Canis familiaris"], ["kingdom", "Animalia"], ["created_at", "2021-01-03 00:24:00.381083"], ["updated_at", "2021-01-03 00:24:00.381083"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAnimal Create (0.5ms)[0m  [1m[32mINSERT INTO "animals" ("common_name", "latin_name", "kingdom", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["common_name", "Cat"], ["latin_name", "Felis catus"], ["kingdom", "Animalia"], ["created_at", "2021-01-03 00:24:48.141323"], ["updated_at", "2021-01-03 00:24:48.141323"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAnimal Create (0.6ms)[0m  [1m[32mINSERT INTO "animals" ("common_name", "latin_name", "kingdom", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["common_name", "Python"], ["latin_name", "Pythonidae"], ["kingdom", "Animalia"], ["created_at", "2021-01-03 00:25:22.033422"], ["updated_at", "2021-01-03 00:25:22.033422"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAnimal Load (0.6ms)[0m  [1m[34mSELECT "animals".* FROM "animals" ORDER BY "animals"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
